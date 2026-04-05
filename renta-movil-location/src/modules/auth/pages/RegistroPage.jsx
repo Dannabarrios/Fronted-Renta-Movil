@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRegistro } from '../hooks/useRegistro';
+import logo from '../../../assets/logo.png';
 
 // ── Componente Campo definido FUERA del componente principal ──────────────────
 // IMPORTANTE: si se define dentro, React lo re-crea en cada render y el input
@@ -41,7 +42,7 @@ const Campo = ({
           }
           style={styles.eyeBtn}
         >
-          {(name === 'password' ? verPassword : verConfirmar) ? '🙈' : '👁️'}
+          {(name === 'password' ? verPassword : verConfirmar) ? '' : ''}
         </button>
       )}
     </div>
@@ -184,25 +185,15 @@ const RegistroPage = () => {
   return (
     <div style={styles.pagina}>
 
-      {/* Barra superior azul */}
-      <div style={styles.barraTop}>
-        <span style={styles.idioma}>🌐 Español (ES) ▾</span>
-      </div>
+      
 
       {/* Layout: logo + tarjeta */}
       <div style={styles.contenedor}>
 
         {/* Panel izquierdo con logo */}
         <div style={styles.panelLogo}>
-          <svg width="110" height="60" viewBox="0 0 110 60" fill="none">
-            <path d="M15 38 C15 38 20 22 35 20 L75 20 C90 20 95 38 95 38" stroke="#1a56db" strokeWidth="3" fill="none"/>
-            <rect x="10" y="35" width="90" height="14" rx="7" fill="#1a56db"/>
-            <circle cx="28" cy="50" r="8" fill="#0f3d8c" stroke="#fff" strokeWidth="2"/>
-            <circle cx="82" cy="50" r="8" fill="#0f3d8c" stroke="#fff" strokeWidth="2"/>
-            <path d="M38 26 L45 20 L65 20 L72 26 Z" fill="#4d90fe" opacity="0.5"/>
-          </svg>
-          <h1 style={styles.logoTitulo}>RentaMovil</h1>
-          <p style={styles.logoSlogan}>Alquila fácil, conduce libre</p>
+          <img src={logo} alt="RentaMovil" style={{ width: 240, marginBottom: 8 }} />
+          
         </div>
 
         {/* Tarjeta del formulario */}
@@ -211,7 +202,7 @@ const RegistroPage = () => {
           <div style={styles.lineaTitulo} />
 
           {error && (
-            <div style={styles.alertaError}>⚠️ {error}</div>
+            <div style={styles.alertaError}> {error}</div>
           )}
 
           <form onSubmit={handleSubmit} style={styles.form}>
